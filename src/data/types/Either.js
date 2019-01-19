@@ -3,7 +3,7 @@ class Left {
     this._value = val
   }
 
-  static of (x) {
+  static pure (x) {
     return new Left(x)
   }
 
@@ -11,12 +11,12 @@ class Left {
   join  = () => this
   chain = () => this
   ap    = () => this
-  return = () => this._value
+  val = () => this._value
 }
 
 class Right {
   constructor(val) { this._value = val }
-  static of(x) {
+  static pure(x) {
     return new Right(x)
   }
 
@@ -40,7 +40,7 @@ class Right {
     return this.map(functionToRun);
   }
 
-  return() {
+  val() {
     return this._value
   }
 }
@@ -48,17 +48,17 @@ class Right {
 
 
 export function left(x) {
-  return Left.of(x);
+  return Left.pure(x);
 }
 
 export function right(x) {
-  return Right.of(x);
+  return Right.pure(x);
 }
 
 export function either(leftFunc, rightFunc, e) {
   return (e instanceof Left)
-    ? leftFunc(e.return())
-    : rightFunc(e.return());
+    ? leftFunc(e.val())
+    : rightFunc(e.val());
 }
 
 export function liftA2(func) {

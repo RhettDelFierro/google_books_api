@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const Test = () => {
+const Test = () => {
   const usersData = [
     { id: 1, name: 'Tania', username: 'floppydiskette' },
     { id: 2, name: 'Craig', username: 'siliconeidolon' },
@@ -18,9 +18,11 @@ export const Test = () => {
         </div>
         <div className="flex-large">
           <h2>View users</h2>
-          {users.map(u => <h1>{u.name}</h1>)}
+          {users.map(u => <h1 key={u.id}>{u.name}</h1>)}
         </div>
       </div>
     </div>
   )
 }
+
+export default Test

@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class LinkedList {
+export class LinkedList {
   constructor() {
     this.head = null;
   }
@@ -27,21 +27,11 @@ class LinkedList {
   }
 
   getFirst() {
-    return this.head;
+    this.getAt(0)
   }
 
   getLast() {
-    if (!this.head) {
-      return null;
-    }
-
-    let node = this.head;
-    while (node) {
-      if (!node.next) {
-        return node;
-      }
-      node = node.next;
-    }
+    this.getAt(this.size() - 1)
   }
 
   clear() {

@@ -4,10 +4,10 @@ const testAddOne = val => val + 1
 const wrapLeftFunction = val => left(testAddOne(val))
 const wrapLeftErrorStringFunction = val => left('errorString')
 const wrapRightFunction = val => right(testAddOne(val))
-it('Left.return() - will have Left._value', () => {
+it('Left.val() - will have Left._value', () => {
   expect(
     left('foo')
-      .return()
+      .val()
   )
   .toBe('foo')
 })
@@ -16,7 +16,7 @@ it('Left.fmap(testAddOne) - will do nothing', () => {
   expect(
     left(0)
       .fmap(testAddOne)
-      .return()
+      .val()
   ).toBe(0)
 })
 
@@ -25,7 +25,7 @@ it('Left.join() - will do nothing', () => {
     left(0)
       .fmap((x) => left('x'))
       .join()
-      .return()
+      .val()
   ).toBe(0)
 })
 
@@ -33,16 +33,16 @@ it('Left.chain() - will do nothing', () => {
   expect(
     left(0)
       .chain(wrapLeftFunction)
-      .return()
+      .val()
   ).toBe(0)
 })
 
 
 
-it('Right.return() - will have Right._value', () => {
+it('Right.val() - will have Right._value', () => {
   expect(
     right('foo')
-      .return()
+      .val()
   )
     .toBe('foo')
 })
@@ -51,7 +51,7 @@ it('Right.fmap(testAddOne) - will add one', () => {
   expect(
     right(0)
       .fmap(testAddOne)
-      .return()
+      .val()
   ).toBe(1)
 })
 
@@ -59,7 +59,7 @@ it('Right.fmap() will nest', () => {
   expect(
     right(0)
       .fmap(wrapRightFunction)
-      .return()
+      .val()
   ).not.toBe(1)
 })
 
@@ -69,7 +69,7 @@ it('Right.join() with a left - will short circuit the calculation', () => {
     right(0)
       .fmap(wrapLeftErrorStringFunction)
       .join()
-      .return()
+      .val()
   ).toBe('errorString')
 })
 
@@ -77,7 +77,7 @@ it('Right.chain() - will do nothing', () => {
   expect(
     right(0)
       .chain(wrapLeftErrorStringFunction)
-      .return()
+      .val()
   ).toBe('errorString')
 })
 
