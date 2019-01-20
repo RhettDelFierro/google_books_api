@@ -1,9 +1,20 @@
-import React, { Component } from 'react';
+import React, {useContext} from 'react';
+import {GoogleBooksApiProvider} from './contexts'
 import {Body} from './components'
+
+function AppProviders({children}) {
+  return (
+    <GoogleBooksApiProvider>
+      {children}
+    </GoogleBooksApiProvider>
+  )
+}
 
 const App = () => {
   return (
-   <Body/>
+    <AppProviders>
+      <Body/>
+    </AppProviders>
   )
 }
 

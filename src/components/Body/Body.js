@@ -1,11 +1,12 @@
 import React, {} from 'react'
 import '../../App.css';
-import BookForm from './Form'
+import BookForm from './BookForm'
 
 
-const Body = () =>
+const Body = (props) =>
   <>
-    <BookForm/>
+    {console.log(props)}
+    <BookForm googleBooksApi={props.googleBooksApi}/>
   </>
 
 export default Body

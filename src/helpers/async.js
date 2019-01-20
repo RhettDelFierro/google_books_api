@@ -1,6 +1,5 @@
 import axios from 'axios'
-import R from 'ramda'
-const {
+import {
   compose,
   curry,
   lens,
@@ -10,7 +9,7 @@ const {
   over,
   set,
   view
-} = R
+} from 'ramda'
 
 import {
   either,
@@ -20,37 +19,32 @@ import {
   right
 } from '../data'
 
-const QUERY_URL = `https://www.googleapis.com/books/v1/volumes?q=`
-const VOLUME_ID_URL = `https://www.googleapis.com/books/v1/volumes/`
-export const buildURL = (baseUrl) => term => baseUrl + term
+// createAuthorQueryParam :: String -> QueryParam
+function createAuthorQueryParam(authorURI) {
+  return '+inauthor:' + authorURI
+}
 
-function generateSpecificIdUrl = id => VOLUME_ID_URL + id
-function createAuthorQueryParam(authorURI) { return '+inauthor:' + authorURI }
-
-function generateFieldsUrl(title, author, baseUrl) {
-  if (!title && ! author) return left('you must enter some search query')
+// generateQueryParams :: BaseURL -> String -> String -> Url
+export function generateQueryParams(url, title, author) {
+  if (!title && !author) return left('you must enter some search query')
   let authorURI = ''
   let titleURI = ''
   if (title) titleURI = encodeURIComponent(title)
   if (author) authorURI = createAuthorQueryParam(encodeURIComponent(author))
 
-  return right(`${baseUrl}${titleURI || ''}${authorURI}`
+  return right(`${url}${titleURI || ''}${authorURI}`)
 }
 
-// this should be defined by the calling function:
-function alertErrorMissingQueryParams(alertErrorFunc) {
-
+// makeQueryRequest :: Url -> Either String [Item]
+export async function makeQueryRequest(url) {
+    const response = await axios.get(url)
+    console.log(response.data)
+    return (response.data.error)
+      ? left(`Error processing request: ${response.data.error.code} - ${response.data.error.message}`)
+      : right(response.data.items)
 }
 
-async function makeQueryRequest(url){
-  return await axios.get(url)
+export function parseVolumeQuery(items) {
+  if (items.length > 0) return right(items)
+  return left('no items found')
 }
-
-export const makeUrl = curry(generateFieldsUrl)
-export const makeSafeIdUrl = compose(
-  either(
-    handleMissingQueryParams,
-    makeQueryRequest
-  ),
-  generateFieldsUrl
-)
