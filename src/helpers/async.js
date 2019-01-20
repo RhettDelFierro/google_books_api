@@ -39,7 +39,8 @@ export function extractAndSetItemQuery(paths){
   return (item) => {
     const obj = {}
     paths.forEach(path => {
-      obj[path[path.length - 1]] = view(lensProp(path))
+      const p = (typeof path === 'string') ? [path] : path
+      obj[path[path.length - 1]] = view(lensPath(path), item)
     })
     return obj
   }
