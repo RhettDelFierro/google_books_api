@@ -44,6 +44,7 @@ export async function makeQueryRequest(url) {
       : right(response.data.items)
 }
 
+// parseVolumeQuery :: [Item] -> Either String [Item]
 export function parseVolumeQuery(items) {
   if (items.length > 0) return right(items)
   return left('no items found')

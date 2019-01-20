@@ -31,10 +31,12 @@ const BookForm = ({form}) => {
     form.validateFields(async (err, values) => {
       if (!err) {
         const url = generateQueryParams(QUERY_URL, values.title, values.author)
-        console.log(url)
-        const request = await getItems()(url)
-          const x = request.chain(parseVolumeQuery)
-        console.log(x.val())
+        const getHttpRequestReady = getItems(/*error handling func to render on screen*/)
+        const request = await getHttpRequestReady(url)
+        request
+          .chain(parseVolumeQuery)
+          .fmap(console.log)
+          .chain(/*lens function parsing -> set on table through context function*/)
       }
       else console.log(err)
     })
