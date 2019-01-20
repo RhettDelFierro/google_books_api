@@ -1,2 +1,101 @@
 export const QUERY_URL = `https://www.googleapis.com/books/v1/volumes?q=`
 export const VOLUME_ID_URL = `https://www.googleapis.com/books/v1/volumes/`
+
+const ACCESS_INFO = 'accessInfo'
+const ACCESS_VIEW_STATUS = 'accessViewStatus'
+const ACS_TOKEN_LINK = 'acsTokenLink'
+const AMOUNT = 'amount'
+const AUTHORS = 'authors'
+const AVERAGE_RATING = 'averageRating'
+const BUY_LINK = 'buyLink'
+const CATEGORIES = 'categories'
+const COUNTRY = 'country'
+const CURRENCY_CODE = 'currencyCode'
+const DESCRIPTION = 'description'
+const ETAG = 'etag'
+const EPUB = 'epub'
+const ID = 'id'
+const IDENTIFIER = 'identifier'
+const IMAGE_LINKS = 'imageLinks'
+const INDUSTRY_IDENTIFIERS = 'industryIdentifiers'
+const INFO_LINK = 'infoLink'
+const IS_AVAILABLE = 'isAvailable'
+const IS_EBOOK = 'isEbook'
+const LIST_PRICE = 'listPrince'
+const PAGE_COUNT = 'pageCount'
+const PDF = 'pdf'
+const PREVIEW_LINK = 'previewLink'
+const PRINT_TYPE = 'printType'
+const PUBLISH_DATE = 'publishedDate'
+const RATINGS_COUNT = 'ratingsCount'
+const RETAIL_PRICE = 'retailPrice'
+const SELF_LINK = 'selfLink'
+const SALE_INFO = 'saleInfo'
+const SALEABILITY = 'saleability'
+const SEARCH_INFO = 'searchInfo'
+const SMALL_THUMBNAIL = 'smallThumbnail'
+const TEXT_SNIPPET = 'textSnippet'
+const TEXT_TO_SPEED_PERMISSION = 'textToSpeechPermission'
+const THUMBNAIL = 'thumbnail'
+const TITLE = 'title'
+const TYPE = 'type'
+const VIEWABILITY = 'viewability'
+const VOLUME_INFO = 'volumeInfo'
+
+const ENUMS = {
+  ALLOWED: 'ALLOWED',
+  BOOK: 'BOOK',
+  FOR_SALE: 'FOR_SALE',
+  NOT_MATURE: 'NOT_MATURE',
+  PARTIAL: 'PARTIAL',
+  SAMPLE: 'SAMPLE',
+  US: 'US',
+  USD: 'USD',
+}
+
+
+
+
+const PATHS = {
+  QUERIES: {
+    ID,
+    ETAG,
+    SELF_LINK,
+    TITLE: [VOLUME_INFO, TITLE],
+    AUTHORS: [VOLUME_INFO, AUTHORS],
+    PUBLISH_DATE: [VOLUME_INFO, PUBLISH_DATE],
+    DESCRIPTION: [VOLUME_INFO, DESCRIPTION],
+    INDUSTRY_IDENTIFIERS: [VOLUME_INFO, INDUSTRY_IDENTIFIERS],
+    PAGE_COUNT: [VOLUME_INFO, PAGE_COUNT],
+    PRINT_TYPE: [VOLUME_INFO, PRINT_TYPE],
+    CATEGORIES: [VOLUME_INFO, CATEGORIES],
+    AVERAGE_RATING: [VOLUME_INFO, AVERAGE_RATING],
+    RATINGS_COUNT: [VOLUME_INFO, RATINGS_COUNT],
+    IMAGE_LINKS: [VOLUME_INFO, IMAGE_LINKS],
+    SMALL_THUMBNAIL: [VOLUME_INFO, IMAGE_LINKS, SMALL_THUMBNAIL],
+    THUMBNAIL: [VOLUME_INFO, THUMBNAIL],
+    PREVIEW_LINK: [VOLUME_INFO, PREVIEW_LINK],
+    INFO_LINK: [VOLUME_INFO, INFO_LINK],
+    SALEABILITY: [SALE_INFO, SALEABILITY],
+    IS_EBOOK: [SALE_INFO, IS_EBOOK],
+    LIST_PRICE: [SALE_INFO, LIST_PRICE],
+    LIST_PRICE_AMOUNT: [SALE_INFO, LIST_PRICE, AMOUNT],
+    LIST_PRICE_CURRENCY_CODE: [SALE_INFO, LIST_PRICE, CURRENCY_CODE],
+    RETAIL_PRICE: [SALE_INFO, RETAIL_PRICE],
+    RETAIL_PRICE_AMOUNT: [SALE_INFO, RETAIL_PRICE, AMOUNT],
+    RETAIL_PRICE_CURRENCY_CODE: [SALE_INFO, RETAIL_PRICE, CURRENCY_CODE],
+    BUY_LINK: [SALE_INFO, BUY_LINK],
+    COUNTRY: [ACCESS_INFO, COUNTRY],
+    VIEWABILITY: [ACCESS_INFO, VIEWABILITY],
+    TEXT_TO_SPEED_PERMISSION: [ACCESS_INFO, TEXT_TO_SPEED_PERMISSION],
+    EPUB: [ACCESS_INFO, EPUB],
+    EPUB_IS_AVAILABLE: [ACCESS_INFO, EPUB, IS_AVAILABLE],
+    EPUB_ACS_ACCESS_TOKEN_LINK: [ACCESS_INFO, EPUB, ACS_TOKEN_LINK],
+    PDF: [ACCESS_INFO, PDF],
+    PDF_IS_AVAILABLE: [ACCESS_INFO, PDF, IS_AVAILABLE],
+    PDF_ACS_ACCESS_TOKEN_LINK: [ACCESS_INFO, PDF, ACS_TOKEN_LINK],
+    ACCESS_VIEW_STATUS: [ACCESS_INFO, ACCESS_VIEW_STATUS],
+    TEXT_SNIPPET: [SEARCH_INFO, TEXT_SNIPPET]
+  }
+}
+

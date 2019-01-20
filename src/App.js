@@ -1,12 +1,14 @@
 import React, {useContext} from 'react';
-import {GoogleBooksApiProvider} from './contexts'
+import {ErrorProvider, GoogleBooksApiProvider} from './contexts'
 import {Body} from './components'
 
 function AppProviders({children}) {
   return (
-    <GoogleBooksApiProvider>
-      {children}
-    </GoogleBooksApiProvider>
+    <ErrorProvider>
+      <GoogleBooksApiProvider>
+        {children}
+      </GoogleBooksApiProvider>
+    </ErrorProvider>
   )
 }
 

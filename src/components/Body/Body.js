@@ -5,7 +5,6 @@ import BookForm from './BookForm'
 
 const Body = (props) =>
   <>
-    {console.log(props)}
     <BookForm googleBooksApi={props.googleBooksApi}/>
   </>
 

@@ -1,6 +1,5 @@
-import {generateQueryParams, makeQueryRequest, parseVolumeQuery} from './async'
+import {extractAndSetItemQuery, generateQueryParams} from './async'
 export {
+  extractAndSetItemQuery,
   generateQueryParams,
-  makeQueryRequest,
-  parseVolumeQuery
 }
