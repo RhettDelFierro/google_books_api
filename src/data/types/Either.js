@@ -1,3 +1,4 @@
+import {curry} from 'ramda'
 class Left {
   constructor(val) {
     this._value = val
@@ -12,6 +13,13 @@ class Left {
   chain = () => this
   ap    = () => this
   val = () => this._value
+  get isLeft() {
+    return true
+  }
+
+  get isRight() {
+    return false
+  }
 }
 
 class Right {
@@ -43,8 +51,15 @@ class Right {
   val() {
     return this._value
   }
-}
 
+  get isLeft() {
+    return false
+  }
+
+  get isRight() {
+    return true
+  }
+}
 
 
 export function left(x) {
@@ -55,11 +70,13 @@ export function right(x) {
   return Right.pure(x);
 }
 
-export function either(leftFunc, rightFunc, e) {
-  return (e instanceof Left)
-    ? leftFunc(e.val())
-    : rightFunc(e.val());
+function eitherFull(leftFunc, rightFunc, e) {
+    return (e.isLeft)
+      ? leftFunc(e.val())
+      : rightFunc(e.val());
 }
+
+export const either = curry(eitherFull)
 
 export function liftA2(func) {
   return function runApplicativeFunc(a, b) {
