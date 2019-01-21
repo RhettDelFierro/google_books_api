@@ -1,4 +1,4 @@
-import {extractAndSetItemQuery, generateQueryParams} from './async'
+import {extractAndSetItemQuery, generateQueryParams} from './parse'
 export {
   extractAndSetItemQuery,
   generateQueryParams,

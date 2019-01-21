@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {
   compose,
   curry,
@@ -11,14 +10,6 @@ import {
   view
 } from 'ramda'
 
-import {
-  either,
-  fromNullable,
-  left,
-  liftA2,
-  right
-} from '../data'
-
 // createAuthorQueryParam :: String -> QueryParam
 function createAuthorQueryParam(authorURI) {
   return '+inauthor:' + authorURI
@@ -26,7 +17,7 @@ function createAuthorQueryParam(authorURI) {
 
 // generateQueryParams :: BaseURL -> String -> String -> Url
 export function generateQueryParams(url, title, author) {
-  if (!title && !author) return left('you must enter some search query')
+  if (!title && !author) 'you must enter some search query'
   let authorURI = ''
   let titleURI = ''
   if (title) titleURI = encodeURIComponent(title)
