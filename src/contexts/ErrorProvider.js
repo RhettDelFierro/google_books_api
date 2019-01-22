@@ -3,12 +3,16 @@ import React, {useState} from 'react'
 export const ErrorContext = React.createContext('error')
 
 const ErrorProvider = (props) => {
-  const [errors, setError] = useState([])
+  const errorInitial = {
+    noResults: '',
+    apiErrorMessage: ''
+  }
+  const [errors, setError] = useState({})
 
   const state = {
     errors,
-    clearError: (error) => setError(errors.filter(err => err !== error)),
-    clearErrors: () => setError([]),
+    clearError: (error) => setError(errorInitial),
+    clearErrors: () => setError(errorInitial),
     setError
   }
 

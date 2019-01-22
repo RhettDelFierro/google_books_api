@@ -1,11 +1,12 @@
 import React, {} from 'react'
 import '../../App.css';
 import BookForm from './BookForm'
-
+import BookTable from "./BookTable"
 
 const Body = (props) =>
   <>
-    <BookForm googleBooksApi={props.googleBooksApi}/>
+    <BookForm/>
+    <BookTable/>
   </>
 
 export default Body

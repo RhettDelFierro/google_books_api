@@ -1,12 +1,14 @@
 import React, {useContext} from 'react';
-import {ErrorProvider, GoogleBooksApiProvider} from './contexts'
-import {Body} from './components'
+import {ErrorProvider, GoogleBooksApiProvider, ModalControllerProvider} from './contexts'
+import {QueryErrorModal, Body, ViewMoreResultsModal} from './components'
 
 function AppProviders({children}) {
   return (
     <ErrorProvider>
       <GoogleBooksApiProvider>
-        {children}
+        <ModalControllerProvider>
+          {children}
+        </ModalControllerProvider>
       </GoogleBooksApiProvider>
     </ErrorProvider>
   )
@@ -15,6 +17,8 @@ function AppProviders({children}) {
 const App = () => {
   return (
     <AppProviders>
+      <QueryErrorModal/>
+      <ViewMoreResultsModal/>
       <Body/>
     </AppProviders>
   )

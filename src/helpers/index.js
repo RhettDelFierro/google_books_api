@@ -1,5 +1,5 @@
-import {extractAndSetItemQuery, generateQueryParams} from './parse'
+import {extractAndSetTableItemQuery, generateQueryParams} from './parse'
 export {
-  extractAndSetItemQuery,
+  extractAndSetTableItemQuery,
   generateQueryParams,
 }
